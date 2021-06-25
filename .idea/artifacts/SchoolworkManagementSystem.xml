@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="SchoolworkManagementSystem">
+    <output-path>$PROJECT_DIR$/out/artifacts/SchoolworkManagementSystem</output-path>
+    <root id="root">
+      <element id="archive" name="SchoolworkManagementSystem.jar">
+        <element id="module-output" name="SchoolworkManagementSystem" />
+      </element>
+    </root>
+  </artifact>
+</component>
