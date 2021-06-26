@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.TeacherMapper">
+    <resultMap id="Teacher" type="com.ssm.pojo.Teacher">
+        <result property="teacherId" column="teacherId"/>
+        <result property="teacherAccount" column="teacherAccount"/>
+        <result property="teacherName" column="teacherName"/>
+        <result property="teacherAge" column="teacherAge"/>
+        <result property="teacherSex" column="teacherSex"/>
+        <result property="teacherPosition" column="teacherPosition"/>
+        <result property="teacherPhone" column="teacherPhone"/>
+        <result property="teacherEmail" column="teacherEmail"/>
+    </resultMap>
+    <insert id="addTeacher" parameterType="Teacher">
+        insert into teacher(teacherAccount,teacherName,teacherSex,teacherPhone,teacherEmail,teacherAge)
+        values (#{teacherAccount},#{teacherName},#{teacherSex},#{teacherPhone},#{teacherEmail},#{teacherAge});
+    </insert>
+
+    <delete id="deleteTeacherById" parameterType="int">
+        delete from teacher where  teacherId = #{teacherId};
+    </delete>
+
+    <update id="updateTeacher" parameterType="Teacher">
+        update teacher
+        set teacherAccount = #{teacherAccount},teacherName = #{teacherName},teacherSex = #{teacherSex},
+        teacherPosition = #{teacherPosition},teacherPhone=#{teacherPhone},teacherEmail=#{teacherEmail},teacherAge=#{teacherAge}
+        where teacherId = #{teacherId};
+    </update>
+
+    <select id="queryTeacherById" parameterType="int" resultMap="Teacher">
+        select * from teacher where teacherId = #{teacherId};
+    </select>
+
+    <select id="queryAllTeacher" resultMap="Teacher">
+        select *
+        from teacher;
+    </select>
+
+    <select id="selectTeacherByName" resultMap="Teacher">
+        select *
+        from teacher
+        where teacherName like #{teacherName}"%";
+    </select>
+</mapper>
